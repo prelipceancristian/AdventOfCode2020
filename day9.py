@@ -1,5 +1,6 @@
 preamble = []
 all_numbers = []
+sums = []
 
 
 def find_irregularity(pre, nr):
