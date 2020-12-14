@@ -39,7 +39,7 @@ while not glfw.window_should_close(window):
     glClear(GL_COLOR_BUFFER_BIT)
 
     #
-    # glRotatef(2, 0, 1, 0)
+    glRotatef(2, 1, 1, 1)
 
     glDrawArrays(GL_TRIANGLES, 0, 3)
 
