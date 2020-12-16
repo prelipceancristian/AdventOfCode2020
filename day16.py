@@ -5,6 +5,12 @@ my_ticket = []
 nearby_tickets = []
 condition_links = {}
 
+p = 1
+final_dict = {}
+
+s = 0
+k = ""
+
 with open("input16.txt", "r") as fp:
     line = fp.readline()
     while line != "\n":
@@ -63,28 +69,18 @@ for condition in condition_notes:
         if valid is True:
             valid_spots.append(i)
     condition_links[condition[0]] = valid_spots
-p = 1
 
-clc = deepcopy(condition_links)
-final_dict = {}
-# clc = sorted(clc.items(), key=lambda x: x[1], reverse=True)
-# final_dict = sorted(clc.items(), key=lambda x: x[1], reverse=True)
-# print(clc)
-
-# determine the key with the largest list:
-s = 0
-k = ""
-for key, val in clc.items():
+for key, val in condition_links.items():
     if len(val) > s:
         s = len(val)
         k = key
 
-while len(clc[k]) > 0:
-    for key, val in clc.items():
+while len(condition_links[k]) > 0:
+    for key, val in condition_links.items():
         if len(val) == 1:
             final_dict[key] = val[0]
             to_delete = val[0]
-            for key2, val2 in clc.items():
+            for key2, val2 in condition_links.items():
                 if to_delete in val2:
                     val2.remove(to_delete)
 
@@ -93,5 +89,3 @@ for key, val in final_dict.items():
         p *= my_ticket[val]
 
 print(p)
-
-
