@@ -1,6 +1,3 @@
-equations = []
-
-
 def solve_clean_equation(eq):
     eq = eq.split(' ')
     res = int(eq[0])
@@ -35,7 +32,6 @@ def solve_clean_advanced_equation(eq):
 
 def solve_advanced_equation(eq):
     left_bracket_pos = -1
-    right_bracket_pos = -1
     while '(' in eq:
         for ind, elem in enumerate(eq):
             if elem == '(':
@@ -51,7 +47,6 @@ def solve_advanced_equation(eq):
 
 def solve_equation(eq):
     left_bracket_pos = -1
-    right_bracket_pos = -1
     while eq.find('(') != -1:
         for ind, ch in enumerate(eq):
             if ch == '(':
@@ -65,15 +60,14 @@ def solve_equation(eq):
     return solve_clean_equation(eq)
 
 
-def parse_data(_line):
-    # _line = _line.replace(" ", "")
+def parse_data(_line, lst):
     _line = _line.strip()
-    equations.append(_line)
+    lst.append(_line)
 
 
+equations = []
 with open("input18.txt", "r") as fp:
     for line in fp:
-        parse_data(line)
-
+        parse_data(line, equations)
 print(sum(map(solve_advanced_equation, equations)))
-# print(sum(map(solve_equation, equations)))
+print(sum(map(solve_equation, equations)))
